@@ -120,3 +120,39 @@ Node.js enables the creation of complex and powerful applications.
 - Executes JavaScript code outside the browser.
 
 ---
+
+## Hello World in Node.js
+
+You can execute JavaScript in Node.js in two ways:
+
+### 1. Node REPL (Read-Evaluate-Print-Loop)
+
+- Open the terminal and type `node`, then press Enter.
+- This opens an interactive shell where you can write and execute JavaScript code immediately (similar to the browser console).
+- **Note**: This method is not recommended for running Node.js applications.
+
+### 2. Execute Code in a JavaScript File
+
+- Write JavaScript code in a file (e.g., `app.js`).
+- Run the file using the command:
+  ```bash
+  node app.js
+  ```
+
+---
+
+## Browser vs Node.js
+
+- In the **browser**, most interactions involve the DOM or Web Platform APIs like Cookies.
+- In **Node.js**, there are no browser-specific objects like `document` or `window`.
+- The browser lacks the powerful APIs that Node.js provides, such as file system access.
+- With Node.js, you control the runtime environment and can use modern ES6 modules.
+
+### Section Summary
+
+- ECMAScript
+- Chrome's V8 engine
+- JavaScript runtime
+- Node.js visually and through code
+- Hello World program in Node.js
+- Browser vs Node.js
