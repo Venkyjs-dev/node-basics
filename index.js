@@ -1,8 +1,4 @@
-const batman = require("./super-heoro");
+const data = require("./data.json");
+// import data from "./data.json";
 
-console.log(batman.getName());
-batman.setName("batman");
-console.log(batman.getName());
-
-const superman = require("./super-heoro");
-console.log(superman.getName());
+console.log(data);

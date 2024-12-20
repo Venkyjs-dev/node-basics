@@ -203,3 +203,161 @@ module.exports = { name: "Correct Export" };
 const module = require("./module");
 console.log(module.name); // Output: "Correct Export"
 ```
+
+## Version 16: ES Modules
+
+### CommonJS
+
+- Each file is treated as a module.
+- Variables, functions, classes, etc., are not accessible to other files by default.
+- Explicitly specify which part of your code should be exported using `module.exports`.
+- To import code into a file, use the `require()` function.
+
+### ES Modules
+
+- At the time Node.js was created, there was no built-in module system in JavaScript.
+- Node.js defaulted to CommonJS as its module system.
+- As of ES2015, JavaScript has a standardized module system as part of the language itself.
+- That module system is called **EcmaScript Modules (ES Modules or ESM)**.
+
+#### Key Points about ES Modules:
+
+- ES modules should have `.mjs` as their file extension.
+- **Default export and import**:
+
+  - Example:
+
+    ```javascript
+    // Export
+    export default function greet() {
+      console.log("Hello, World!");
+    }
+
+    // Import
+    import greet from "./greet.mjs";
+    greet();
+    ```
+
+- **Named export and import**:
+
+  - Example:
+
+    ```javascript
+    // Export
+    export const add = (a, b) => a + b;
+    export const subtract = (a, b) => a - b;
+
+    // Import
+    import { add, subtract } from "./math.mjs";
+    console.log(add(5, 3));
+    console.log(subtract(5, 3));
+    ```
+
+### Summary
+
+- **ES Modules** is the ECMAScript standard for modules.
+- It was introduced with **ES2015**.
+- Node.js **14 and above** supports ES Modules.
+- Differences from CommonJS:
+  - Use the `export` keyword instead of `module.exports`.
+  - Use `import` to bring in variables or functions.
+  - For default exports, any name can be used when importing.
+  - For named exports, the import name must match the export name.
+
+---
+
+## Version 17: Importing JSON and Watch Mode
+
+### Importing JSON
+
+- **Using CommonJS**:
+  - The `require` function parses JSON data into a JavaScript object.
+  - Example:
+    ```javascript
+    const data = require("./data.json");
+    console.log(data);
+    ```
+- **Using ES Modules**:
+  - JSON files can be imported using `import`.
+  - Example:
+    ```javascript
+    import data from "./data.json" assert { type: "json" };
+    console.log(data);
+    ```
+
+### Watch Mode
+
+- Watch mode allows automatic re-execution of a file whenever changes are detected.
+- **Command for CommonJS**:
+  ```bash
+  node --watch filename
+  ```
+
+---
+
+## Section Summary
+
+### What is a Module and What is the Need for Modules?
+
+A **module** is a reusable block of code that can be imported into other files. It helps:
+
+- Organize code into logical components.
+- Promote code reusability.
+- Avoid variable and function name conflicts.
+
+### Types of Modules in Node.js
+
+1. **Local Modules**:
+   - Custom modules created in your project.
+2. **Built-in Modules**:
+   - Modules provided by Node.js (e.g., `fs`, `http`).
+3. **Third-party Modules**:
+   - Modules installed via npm (e.g., `express`).
+
+### CommonJS Module Format
+
+- CommonJS is the default module system in Node.js.
+- Example:
+
+  ```javascript
+  // Export
+  module.exports = function greet() {
+    console.log("Hello");
+  };
+
+  // Import
+  const greet = require("./greet");
+  greet();
+  ```
+
+### Module Wrapper (IIFE)
+
+- Every module in Node.js is wrapped in an Immediately Invoked Function Expression (IIFE).
+- Example:
+  ```javascript
+  (function (exports, require, module, __filename, __dirname) {
+    // Module code here
+  });
+  ```
+
+### Module Caching
+
+- When a module is required for the first time, it is cached.
+- Subsequent `require` calls return the cached version unless the cache is cleared.
+
+### Patterns for Importing and Exporting Modules
+
+#### CommonJS
+
+- Export: `module.exports`
+- Import: `require()`
+
+#### ES Modules
+
+- Export: `export`, `export default`
+- Import: `import`
+
+### Importing JSON Data and Watch Mode
+
+- Import JSON using `require` (CommonJS) or `import` (ESM).
+- Use `node --watch filename` to enable watch mode for automatic file execution on changes.
